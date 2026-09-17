@@ -53,9 +53,15 @@
      gebraucht, die ladeStuedenten() beim Login sofort mit aufruft. */
   var uploadedList = adminPanel ? adminPanel.querySelector('[data-admin-uploaded-list]') : null;
 
+  /* Admin-Passwort wird NICHT dauerhaft in localStorage gehalten, sondern
+     nur für die Dauer der Browser-Sitzung (sessionStorage) — es wird bei
+     jeder geschützten Aktion (Liste laden, Schüler anlegen/löschen)
+     serverseitig neu geprüft, siehe admin_list_students() etc. */
+  function adminPasswort() { return sessionStorage.getItem('adminPwd') || ''; }
+
   if (loginForm) {
     /* Schon angemeldet? */
-    if (localStorage.getItem('adminAuth')) {
+    if (sessionStorage.getItem('adminAuth')) {
       loginForm.parentElement.hidden = true;
       if (adminContent) adminContent.hidden = false;
       ladeStuedenten();
@@ -77,7 +83,8 @@
         if (submitBtn) { submitBtn.textContent = submitBtnText; submitBtn.disabled = false; }
         if (r.error) { if (loginErr) zeige(loginErr, 'Fehler bei der Anmeldung.'); return; }
         if (r.data === true) {
-          localStorage.setItem('adminAuth', 'true');
+          sessionStorage.setItem('adminAuth', 'true');
+          sessionStorage.setItem('adminPwd', pwd);
           loginForm.parentElement.hidden = true;
           if (adminContent) adminContent.hidden = false;
           ladeStuedenten();
@@ -93,7 +100,8 @@
 
   if (logoutBtn) {
     logoutBtn.addEventListener('click', function () {
-      localStorage.removeItem('adminAuth');
+      sessionStorage.removeItem('adminAuth');
+      sessionStorage.removeItem('adminPwd');
       location.reload();
     });
   }
@@ -188,8 +196,9 @@
       }
 
       /* Account serverseitig anlegen — das Passwort wird dort gehasht,
-         nie im Klartext gespeichert oder client-seitig verarbeitet. */
-      db.rpc('create_student_account', { p_email: email, p_password: password })
+         nie im Klartext gespeichert oder client-seitig verarbeitet. Das
+         Admin-Passwort wird bei jedem Aufruf erneut serverseitig geprüft. */
+      db.rpc('create_student_account', { p_email: email, p_password: password, p_admin_password: adminPasswort() })
         .then(function (r) {
           fertig();
           if (r.error) {
@@ -230,9 +239,7 @@
         + 'Zeitüberschreitung beim Laden. Bitte Seite neu laden.</li>';
     }, 8000);
 
-    db.from('student_accounts')
-      .select('id, email, created_at')
-      .order('created_at', { ascending: false })
+    db.rpc('admin_list_students', { p_admin_password: adminPasswort() })
       .then(function (r) {
         if (erledigt) return; /* Timeout kam zuerst — Antwort ignorieren */
         erledigt = true;
@@ -253,7 +260,19 @@
           ladeHochgeladeneDateien();
         }
 
-        if (r.error || !r.data || !r.data.length) {
+        if (r.error) {
+          /* Admin-Passwort wurde zwischenzeitlich geändert oder die
+             Sitzung ist ungültig — zurück zum Login zwingen. */
+          if (/ungueltiges passwort/i.test(r.error.message || '')) {
+            sessionStorage.removeItem('adminAuth');
+            sessionStorage.removeItem('adminPwd');
+            location.reload();
+            return;
+          }
+          studentsList.innerHTML = '<li class="mh-datei mh-datei--leer">Fehler beim Laden: ' + r.error.message + '</li>';
+          return;
+        }
+        if (!r.data || !r.data.length) {
           studentsList.innerHTML = '<li class="mh-datei mh-datei--leer">Noch keine Schüler hinzugefügt.</li>';
           return;
         }
@@ -277,14 +296,11 @@
           delBtn.addEventListener('click', function () {
             if (!confirm('Schüler ' + student.email + ' wirkllich löschen?')) return;
             delBtn.disabled = true;
-            /* .select() anhängen, damit die gelöschten Zeilen zurückkommen —
-               so lässt sich erkennen, ob RLS das Löschen lautlos verhindert
-               hat (kein Fehler, aber 0 betroffene Zeilen). */
-            db.from('student_accounts').delete().eq('id', student.id).select().then(function (r) {
+            db.rpc('admin_delete_student', { p_admin_password: adminPasswort(), p_student_id: student.id }).then(function (r) {
               if (r.error) { delBtn.disabled = false; alert('Fehler: ' + r.error.message); return; }
-              if (!r.data || !r.data.length) {
+              if (r.data !== true) {
                 delBtn.disabled = false;
-                alert('Löschen fehlgeschlagen: Keine Berechtigung (RLS-Policy fehlt?).');
+                alert('Löschen fehlgeschlagen: Schüler wurde nicht gefunden.');
                 return;
               }
               li.remove();
@@ -421,10 +437,4 @@
     });
   }
 
-  /* Nur wenn angemeldet */
-  if (!localStorage.getItem('adminAuth') && adminPanel) {
-    adminPanel.querySelector('[data-mh-admin]')
-      ? (adminPanel.querySelector('[data-admin-content]').hidden = true)
-      : null;
-  }
 })();
