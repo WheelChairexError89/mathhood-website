@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Rechtsseiten nicht in den Suchindex
+Disallow: /impressum.html
+Disallow: /datenschutz.html
+Disallow: /agb.html
+Disallow: /widerruf.html
+Disallow: /login.html
+Disallow: /lernbereich.html
+
+Sitemap: https://DEINE-DOMAIN.de/sitemap.xml

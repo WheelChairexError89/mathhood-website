@@ -1,0 +1,30 @@
+# =====================================================================
+#  MATHHOOD — Netlify-Konfiguration
+# =====================================================================
+
+[build]
+  publish = "."
+
+# --- Sicherheits-Kopfzeilen fuer alle Seiten -------------------------
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options        = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy        = "strict-origin-when-cross-origin"
+    Permissions-Policy     = "geolocation=(), microphone=(), camera=()"
+
+    # ⚠️ VORSCHAU-MODUS: haelt die Seite aus Google raus.
+    # VOR DEM ECHTEN LAUNCH diese Zeile loeschen!
+    X-Robots-Tag = "noindex, nofollow"
+
+# --- Schriften lange zwischenspeichern -------------------------------
+[[headers]]
+  for = "/assets/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/assets/vendor/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

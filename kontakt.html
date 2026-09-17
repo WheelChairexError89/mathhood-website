@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#24493a">
+<title>Kontakt &amp; FAQ | MATHHOOD</title>
+<meta name="description" content="Fragen zur Mathe-Nachhilfe? Schreib uns. Antwort innerhalb von 24 Stunden. Dazu Antworten auf die häufigsten Fragen rund um Ablauf, Preise und Probestunden.">
+<meta property="og:title" content="Kontakt &amp; FAQ | MATHHOOD">
+<meta property="og:description" content="Schick den Pfeil los. Antwort innerhalb von 24 Stunden.">
+<link rel="icon" href="assets/img/favicon-180.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/favicon-180.png">
+<link rel="preload" href="assets/fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/work-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts/fonts.css?v=20260917173301">
+<link rel="stylesheet" href="css/styles.css?v=20260917173301">
+
+</head>
+<body>
+
+<a class="mh-skip" href="#main">Zum Inhalt springen</a>
+
+<!-- Abdunkelung hinter dem mobilen Menü (eigenes Element, direkt im body) -->
+<div class="mh-navbackdrop" data-nav-backdrop aria-hidden="true"></div>
+
+<header class="mh-header">
+  <div class="mh-header__inner">
+    <a class="mh-logo" href="index.html" aria-label="MATHHOOD Startseite">
+      <img class="mh-logo__img" src="assets/img/mathhood-logo.png" alt="MATHHOOD"
+           onerror="this.closest('.mh-logo').classList.add('mh-logo--nofile')">
+      <span class="mh-logo__fallback" aria-hidden="true">
+        <span class="mh-logo__word">Mathhood</span>
+      </span>
+    </a>
+
+    <button class="mh-burger" type="button" aria-expanded="false" aria-controls="mh-nav-wrap" aria-label="Menü öffnen">
+      <span></span>
+    </button>
+
+    <div class="mh-header__nav-wrap" id="mh-nav-wrap">
+     <div class="mh-navpanel">
+      <nav class="mh-nav" aria-label="Hauptnavigation" data-mh-nav>
+        <a class="mh-nav__link" href="index.html">Startseite</a>
+        <a class="mh-nav__link" href="preise.html">Nachhilfe &amp; Preise</a>
+        <a class="mh-nav__link" href="ueber-mich.html">Über mich</a>
+        <a class="mh-nav__link" href="kontakt.html">Kontakt</a>
+      </nav>
+      <div class="mh-header__actions">
+        <a class="mh-header__login" href="login.html">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="7" cy="4.4" r="2.5"></circle><path d="M2 12.2c0-2.4 2.2-3.8 5-3.8s5 1.4 5 3.8"></path>
+          </svg>
+          Login
+        </a>
+        <a class="mh-header__cta" href="buchung.html">Jetzt buchen</a>
+      </div>
+     </div>
+    </div>
+  </div>
+</header>
+
+
+<main id="main">
+
+  <header class="mh-pagehead mh-pagehead--green">
+    <h1>Schick den Pfeil los</h1>
+    <p>Egal ob konkrete Frage oder erstes Beschnuppern, wir antworten innerhalb von 24 Stunden.</p>
+  </header>
+
+  <section class="mh-section mh-container">
+    <div class="mh-contact__grid">
+
+      <!-- Formular -->
+      <div class="mh-formwrap">
+        <h2 class="mh-display mh-h3" style="text-transform:uppercase; margin-bottom:6px">Nachricht schreiben</h2>
+        <p class="mh-prose" style="font-size:14.5px; margin-bottom:26px">Felder mit <span style="color:var(--mh-green)">*</span> brauchen wir, um dir antworten zu können.</p>
+
+        <form class="mh-form" data-mh-form method="POST"
+              action="https://formspree.io/f/mgaerbkl">
+
+          <!-- Spam-Falle: bitte nicht entfernen -->
+          <div class="mh-hp" aria-hidden="true">
+            <label for="k-gotcha">Dieses Feld bitte leer lassen</label>
+            <input id="k-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="mh-form__row mh-form__row--2">
+            <div class="mh-field">
+              <label for="k-name">Name <span class="req">*</span></label>
+              <input id="k-name" type="text" name="name" required autocomplete="name" placeholder="Vor- und Nachname">
+            </div>
+            <div class="mh-field">
+              <label for="k-email">E-Mail <span class="req">*</span></label>
+              <input id="k-email" type="email" name="email" required autocomplete="email" placeholder="name@beispiel.de">
+            </div>
+          </div>
+
+          <div class="mh-form__row mh-form__row--2">
+            <div class="mh-field">
+              <label for="k-tel">Telefon</label>
+              <input id="k-tel" type="tel" name="telefon" autocomplete="tel" placeholder="optional">
+            </div>
+            <div class="mh-field">
+              <label for="k-anliegen">Anliegen <span class="req">*</span></label>
+              <select id="k-anliegen" name="anliegen" required>
+                <option value="Allgemeine Frage">Allgemeine Frage</option>
+                <option value="Probestunden">2 Gratis-Stunden / Probestunden</option>
+                <option value="Online-Nachhilfe">Online-Nachhilfe</option>
+                <option value="Vor-Ort-Nachhilfe">Vor-Ort-Nachhilfe</option>
+                <option value="10er-Lernpaket">10er-Lernpaket</option>
+                <option value="Abiturvorbereitung">Abiturvorbereitung</option>
+                <option value="Sonstiges">Sonstiges</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="mh-field">
+            <label for="k-nachricht">Nachricht <span class="req">*</span></label>
+            <textarea id="k-nachricht" name="nachricht" required rows="6"
+                      placeholder="Worum geht es? Klassenstufe, Thema, aktuelle Situation …"></textarea>
+          </div>
+
+          <div class="mh-check">
+            <input id="k-dsgvo" type="checkbox" name="datenschutz" required value="ja">
+            <label for="k-dsgvo">Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und bin damit einverstanden, dass meine Angaben zur Bearbeitung meiner Anfrage gespeichert werden. <span class="req">*</span></label>
+          </div>
+
+          <button class="mh-btn mh-btn--lg" type="submit">Nachricht senden →</button>
+
+          <p class="mh-formnote mh-formnote--ok" data-note="ok" role="status">
+            Danke! Deine Nachricht ist angekommen. Wir melden uns innerhalb von 24 Stunden bei dir.
+          </p>
+          <p class="mh-formnote mh-formnote--err" data-note="err" role="alert">
+            Da ist etwas schiefgelaufen. Bitte versuch es erneut oder schreib uns direkt an kontakt@mathhood.de.
+          </p>
+        </form>
+      </div>
+
+      <!-- Seitenspalte -->
+      <aside>
+        <div class="mh-contactcard">
+          <h2>Direkter Draht</h2>
+          <div class="mh-contactline">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M2 7l10 6 10-6"></path></svg>
+            <a href="mailto:kontakt@mathhood.de">kontakt@mathhood.de</a>
+          </div>
+          <div class="mh-contactline">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"></path></svg>
+            <a href="tel:+4900000000">+49 000 0000000</a>
+          </div>
+          <div class="mh-contactline">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Donauwörth &amp; Umgebung</span>
+          </div>
+        </div>
+
+        <div class="mh-contactcard">
+          <h2>Antwortzeit</h2>
+          <p>Anfragen beantworten wir in der Regel innerhalb von <b>24 Stunden</b>, meist deutlich schneller.</p>
+        </div>
+
+        <div class="mh-contactcard">
+          <h2>Lieber direkt starten?</h2>
+          <p>Die ersten zwei Unterrichtsstunden sind kostenlos, ganz ohne Verpflichtung.</p>
+          <a class="mh-btn mh-btn--block" href="buchung.html" style="margin-top:14px">2 Gratis-Stunden anfordern →</a>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="mh-section mh-section--cream-alt" id="faq">
+    <div class="mh-container" style="max-width:820px">
+      <div style="text-align:center; margin-bottom:clamp(28px,4vw,40px)">
+        <span class="mh-kicker">Häufige Fragen</span>
+        <h2 class="mh-display mh-h2" style="margin-top:8px">Das wollen alle wissen</h2>
+      </div>
+
+      <div class="mh-faq">
+        <details open>
+          <summary>Sind die zwei Probestunden wirklich kostenlos?</summary>
+          <div class="mh-faq__body">
+            <p>Ja. Die ersten beiden Unterrichtsstunden kosten nichts und verpflichten zu nichts. Sie dienen dazu, den Lernstand einzuschätzen und zu schauen, ob die Chemie stimmt. Danach entscheidest du in Ruhe, ob es weitergeht.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Welche Klassenstufen werden unterrichtet?</summary>
+          <div class="mh-faq__body">
+            <p>Von der 5. Klasse bis zum Abitur (13. Klasse): Gymnasium, Realschule und Gemeinschaftsschule. Von Bruchrechnung bis Analysis.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Wie läuft der Online-Unterricht ab?</summary>
+          <div class="mh-faq__body">
+            <p>Über Videokonferenz mit digitalem Whiteboard. Du bekommst vorab einen Link, klickst zum vereinbarten Zeitpunkt darauf, fertig. Aufgaben werden gemeinsam auf dem Whiteboard bearbeitet, Lösungswege Schritt für Schritt erklärt.</p>
+            <p>Du brauchst: Laptop oder Tablet, Internet, idealerweise Mikrofon und Kamera.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Wie weit fährst du für Vor-Ort-Unterricht?</summary>
+          <div class="mh-faq__body">
+            <p>Ausgangspunkt ist Donauwörth. Bis 30 km gelten feste Preise inklusive Anfahrt: bis 5 km 35 €, 5-10 km 40 €, 10-20 km 45 €, 20-30 km 50 €. Darüber hinaus gerne nach Absprache. Frag einfach an.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Was kostet eine Unterrichtsstunde?</summary>
+          <div class="mh-faq__body">
+            <p>Online 20 € pro Unterrichtseinheit (70 Minuten), vor Ort ab 35 € inklusive Anfahrt. Mit dem 10er-Lernpaket sinkt der Preis auf 18 € je Einheit (online). Alle Preise findest du auf der <a href="preise.html">Preisseite</a>.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Wie und wann bezahle ich?</summary>
+          <div class="mh-faq__body">
+            <p>Über die Website läuft keine Zahlung, du buchst dort nur den Termin. Nach der Unterrichtsstunde bekommst du eine Rechnung per E-Mail, zahlbar innerhalb von 14 Tagen per PayPal oder Überweisung. Bei Vor-Ort-Unterricht ist auch Barzahlung direkt nach der Stunde möglich. Ein 10er-Lernpaket wird vor der ersten Einheit bezahlt.</p>
+            <p>Die beiden kostenlosen Stunden stehen auf keiner Rechnung. Alle Angaben dazu findest du auf der <a href="preise.html#zahlung">Preisseite</a>.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Gibt es eine Mindestlaufzeit oder einen Vertrag?</summary>
+          <div class="mh-faq__body">
+            <p>Nein. Es gibt keine Mindestlaufzeit und keine lange Vertragsbindung. Du buchst Einzelstunden oder ein 10er-Paket, mehr nicht.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Wie lange ist ein 10er-Lernpaket gültig?</summary>
+          <div class="mh-faq__body">
+            <p>Sechs Monate ab Kauf. Das reicht auch bei unregelmäßigem Rhythmus bequem aus.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Was, wenn ein Termin nicht klappt?</summary>
+          <div class="mh-faq__body">
+            <p>Kein Problem, sag einfach rechtzeitig Bescheid, dann verschieben wir. Bitte möglichst mindestens 24 Stunden vorher.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Was muss ich zur Stunde vorbereiten?</summary>
+          <div class="mh-faq__body">
+            <p>Am besten liegen bereit: Schulbuch, Heft oder Ordner, Taschenrechner (falls nötig) und die aktuellen Hausaufgaben oder Arbeitsblätter. Und ganz wichtig: deine konkreten Fragen.</p>
+          </div>
+        </details>
+      </div>
+
+      <div style="text-align:center; margin-top:clamp(32px,5vw,44px)">
+        <p class="mh-prose" style="margin-bottom:16px">Deine Frage war nicht dabei?</p>
+        <a class="mh-btn" href="#main">Schreib uns direkt →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="mh-footer">
+  <div class="mh-footer__inner">
+    <div class="mh-footer__top">
+      <img class="mh-footer__logo" src="assets/img/mathhood-logo.png" alt="MATHHOOD">
+      <span class="mh-footer__tag">MATHHOOD by Robin | Mathe-Nachhilfe Klasse 5–13</span>
+    </div>
+
+    <div class="mh-footer__cols">
+      <div>
+        <h2>Angebot</h2>
+        <a href="preise.html">Nachhilfe &amp; Preise</a>
+        <a href="produkt-online.html">Online-Nachhilfe</a>
+        <a href="produkt-vor-ort.html">Vor-Ort-Nachhilfe</a>
+        <a href="produkt-lernpaket.html">10er-Lernpaket</a>
+      </div>
+      <div>
+        <h2>MATHHOOD</h2>
+        <a href="ueber-mich.html">Über mich</a>
+        <a href="dienstleistungen.html">Dienstleistungen</a>
+        <a href="buchung.html">Probestunden buchen</a>
+        <a href="kontakt.html">Kontakt &amp; FAQ</a>
+        <a href="login.html">Lernbereich</a>
+      </div>
+      <div>
+        <h2>Rechtliches</h2>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="agb.html">AGB</a>
+        <a href="widerruf.html">Widerrufsbelehrung</a>
+      </div>
+    </div>
+
+    <div class="mh-footer__bottom">
+
+    <div class="mh-footer__payments">
+      <span class="mh-footer__payments-label">Sichere Zahlungsarten:</span>
+      <div class="mh-footer__payments-methods">
+        <div class="mh-payment-logo">
+          <img src="assets/img/sepa-logo.svg" alt="Banküberweisung SEPA" width="60" height="40">
+          <span>Banküberweisung</span>
+        </div>
+        <a href="https://www.paypal.com/de/home" target="_blank" rel="noopener" class="mh-payment-logo" title="PayPal öffnen">
+          <img src="assets/img/paypal-logo.svg" alt="PayPal" width="60" height="40">
+          <span>PayPal</span>
+        </a>
+      </div>
+    </div>
+
+
+
+
+
+
+      <span>© 2026 MATHHOOD</span>
+      <span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js?v=20260917173301"></script>
+
+<script src="js/forms.js?v=20260917173301"></script>
+</body>
+</html>

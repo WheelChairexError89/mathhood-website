@@ -1,0 +1,40 @@
+<a class="mh-skip" href="#main">Zum Inhalt springen</a>
+
+<!-- Abdunkelung hinter dem mobilen Menü (eigenes Element, direkt im body) -->
+<div class="mh-navbackdrop" data-nav-backdrop aria-hidden="true"></div>
+
+<header class="mh-header">
+  <div class="mh-header__inner">
+    <a class="mh-logo" href="index.html" aria-label="MATHHOOD Startseite">
+      <img class="mh-logo__img" src="assets/img/mathhood-logo.png" alt="MATHHOOD"
+           onerror="this.closest('.mh-logo').classList.add('mh-logo--nofile')">
+      <span class="mh-logo__fallback" aria-hidden="true">
+        <span class="mh-logo__word">Mathhood</span>
+      </span>
+    </a>
+
+    <button class="mh-burger" type="button" aria-expanded="false" aria-controls="mh-nav-wrap" aria-label="Menü öffnen">
+      <span></span>
+    </button>
+
+    <div class="mh-header__nav-wrap" id="mh-nav-wrap">
+     <div class="mh-navpanel">
+      <nav class="mh-nav" aria-label="Hauptnavigation" data-mh-nav>
+        <a class="mh-nav__link" href="index.html">Startseite</a>
+        <a class="mh-nav__link" href="preise.html">Nachhilfe &amp; Preise</a>
+        <a class="mh-nav__link" href="ueber-mich.html">Über mich</a>
+        <a class="mh-nav__link" href="kontakt.html">Kontakt</a>
+      </nav>
+      <div class="mh-header__actions">
+        <a class="mh-header__login" href="login.html">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="7" cy="4.4" r="2.5"></circle><path d="M2 12.2c0-2.4 2.2-3.8 5-3.8s5 1.4 5 3.8"></path>
+          </svg>
+          Login
+        </a>
+        <a class="mh-header__cta" href="buchung.html">Jetzt buchen</a>
+      </div>
+     </div>
+    </div>
+  </div>
+</header>

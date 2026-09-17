@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#24493a">
+<title>Anmelden | MATHHOOD</title>
+<meta name="description" content="Anmeldung zum persönlichen Lernbereich von MATHHOOD.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/img/favicon-180.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/favicon-180.png">
+<link rel="preload" href="assets/fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/work-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts/fonts.css?v=20260917173301">
+<link rel="stylesheet" href="css/styles.css?v=20260917173301">
+
+</head>
+<body>
+
+<a class="mh-skip" href="#main">Zum Inhalt springen</a>
+
+<!-- Abdunkelung hinter dem mobilen Menü (eigenes Element, direkt im body) -->
+<div class="mh-navbackdrop" data-nav-backdrop aria-hidden="true"></div>
+
+<header class="mh-header">
+  <div class="mh-header__inner">
+    <a class="mh-logo" href="index.html" aria-label="MATHHOOD Startseite">
+      <img class="mh-logo__img" src="assets/img/mathhood-logo.png" alt="MATHHOOD"
+           onerror="this.closest('.mh-logo').classList.add('mh-logo--nofile')">
+      <span class="mh-logo__fallback" aria-hidden="true">
+        <span class="mh-logo__word">Mathhood</span>
+      </span>
+    </a>
+
+    <button class="mh-burger" type="button" aria-expanded="false" aria-controls="mh-nav-wrap" aria-label="Menü öffnen">
+      <span></span>
+    </button>
+
+    <div class="mh-header__nav-wrap" id="mh-nav-wrap">
+     <div class="mh-navpanel">
+      <nav class="mh-nav" aria-label="Hauptnavigation" data-mh-nav>
+        <a class="mh-nav__link" href="index.html">Startseite</a>
+        <a class="mh-nav__link" href="preise.html">Nachhilfe &amp; Preise</a>
+        <a class="mh-nav__link" href="ueber-mich.html">Über mich</a>
+        <a class="mh-nav__link" href="kontakt.html">Kontakt</a>
+      </nav>
+      <div class="mh-header__actions">
+        <a class="mh-header__login" href="login.html">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="7" cy="4.4" r="2.5"></circle><path d="M2 12.2c0-2.4 2.2-3.8 5-3.8s5 1.4 5 3.8"></path>
+          </svg>
+          Login
+        </a>
+        <a class="mh-header__cta" href="buchung.html">Jetzt buchen</a>
+      </div>
+     </div>
+    </div>
+  </div>
+</header>
+
+
+<main id="main">
+  <section class="mh-section mh-container">
+    <div class="mh-loginwrap">
+
+      <div class="mh-formwrap">
+        <div class="mh-login__icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="10" rx="2"></rect>
+            <path d="M8 11V7a4 4 0 0 1 8 0v4"></path>
+          </svg>
+        </div>
+
+        <h1 class="mh-display mh-h3" style="text-align:center; text-transform:uppercase; margin-bottom:8px">Lernbereich</h1>
+        <p class="mh-prose" style="text-align:center; font-size:14.5px; margin-bottom:28px">
+          Melde dich mit deiner E-Mail und deinem Passwort an.
+        </p>
+
+        <form class="mh-form" data-mh-login novalidate>
+          <div class="mh-field">
+            <label for="lg-email">E-Mail-Adresse</label>
+            <input id="lg-email" type="email" name="email" required autocomplete="email"
+                   placeholder="name@beispiel.de">
+          </div>
+
+          <div class="mh-field">
+            <label for="lg-password">Passwort</label>
+            <div style="position:relative">
+              <input id="lg-password" type="password" name="password" required autocomplete="current-password"
+                     placeholder="••••••••" style="padding-right:40px">
+              <button class="mh-pwdtoggle" type="button" tabindex="-1" title="Passwort anzeigen/verbergen"
+                      style="position:absolute; right:12px; top:50%; transform:translateY(-50%);
+                             background:none; border:none; cursor:pointer; padding:4px; color:var(--mh-text-muted)">
+                <svg class="mh-pwdtoggle__icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <button class="mh-btn mh-btn--lg mh-btn--block" type="submit">Anmelden →</button>
+
+          <p class="mh-formnote mh-formnote--ok" data-note="ok" role="status">
+            Erfolgreich angemeldet! Du wirst weitergeleitet...
+          </p>
+          <p class="mh-formnote mh-formnote--err" data-note="err" role="alert">
+            E-Mail oder Passwort stimmen nicht. Bitte versuche es nochmal.
+          </p>
+        </form>
+
+        <p class="mh-login__hint">
+          Der Lernbereich steht Schülerinnen und Schülern offen, die bei MATHHOOD
+          Unterricht haben. Du hast deine Zugangsdaten von uns per E-Mail erhalten.
+          Falls es nicht klappt, schreib uns einfach über das
+          <a href="kontakt.html">Kontaktformular</a>.
+        </p>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="mh-footer">
+  <div class="mh-footer__inner">
+    <div class="mh-footer__top">
+      <img class="mh-footer__logo" src="assets/img/mathhood-logo.png" alt="MATHHOOD">
+      <span class="mh-footer__tag">MATHHOOD by Robin | Mathe-Nachhilfe Klasse 5–13</span>
+    </div>
+
+    <div class="mh-footer__cols">
+      <div>
+        <h2>Angebot</h2>
+        <a href="preise.html">Nachhilfe &amp; Preise</a>
+        <a href="produkt-online.html">Online-Nachhilfe</a>
+        <a href="produkt-vor-ort.html">Vor-Ort-Nachhilfe</a>
+        <a href="produkt-lernpaket.html">10er-Lernpaket</a>
+      </div>
+      <div>
+        <h2>MATHHOOD</h2>
+        <a href="ueber-mich.html">Über mich</a>
+        <a href="dienstleistungen.html">Dienstleistungen</a>
+        <a href="buchung.html">Probestunden buchen</a>
+        <a href="kontakt.html">Kontakt &amp; FAQ</a>
+        <a href="login.html">Lernbereich</a>
+      </div>
+      <div>
+        <h2>Rechtliches</h2>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="agb.html">AGB</a>
+        <a href="widerruf.html">Widerrufsbelehrung</a>
+      </div>
+    </div>
+
+    <div class="mh-footer__bottom">
+
+    <div class="mh-footer__payments">
+      <span class="mh-footer__payments-label">Sichere Zahlungsarten:</span>
+      <div class="mh-footer__payments-methods">
+        <div class="mh-payment-logo">
+          <img src="assets/img/sepa-logo.svg" alt="Banküberweisung SEPA" width="60" height="40">
+          <span>Banküberweisung</span>
+        </div>
+        <a href="https://www.paypal.com/de/home" target="_blank" rel="noopener" class="mh-payment-logo" title="PayPal öffnen">
+          <img src="assets/img/paypal-logo.svg" alt="PayPal" width="60" height="40">
+          <span>PayPal</span>
+        </a>
+      </div>
+    </div>
+
+
+
+
+
+
+      <span>© 2026 MATHHOOD</span>
+      <span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js?v=20260917173301"></script>
+
+<script src="js/config.js?v=20260917173301"></script>
+<script src="assets/vendor/supabase/supabase.js?v=20260917173301"></script>
+<script src="js/auth.js?v=20260917173301"></script>
+</body>
+</html>

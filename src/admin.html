@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<!--@include head-top-->
+<title>Admin-Panel | MATHHOOD</title>
+<meta name="description" content="Admin-Panel für Robin - Schüler-Verwaltung">
+<meta name="robots" content="noindex, nofollow">
+<!--@include head-common-->
+</head>
+<body>
+
+<!--@include header-->
+
+<main id="main">
+  <section class="mh-section mh-container" data-mh-admin>
+
+    <!-- 1. Admin-Login -->
+    <div data-admin-login>
+      <div style="max-width:480px; margin-inline:auto; text-align:center">
+        <div class="mh-login__icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M12 7v5l3 2"></path>
+          </svg>
+        </div>
+        <h1 class="mh-display mh-h3" style="text-align:center; text-transform:uppercase; margin-bottom:8px">Admin-Panel</h1>
+        <p class="mh-prose" style="text-align:center; font-size:14.5px; margin-bottom:28px">
+          Nur für Robin
+        </p>
+
+        <form class="mh-form" data-admin-login-form novalidate>
+          <div class="mh-field">
+            <label for="admin-pwd">Admin-Passwort</label>
+            <input id="admin-pwd" type="password" name="password" required autocomplete="current-password"
+                   placeholder="••••••••">
+          </div>
+
+          <button class="mh-btn mh-btn--lg mh-btn--block" type="submit">Anmelden →</button>
+
+          <p class="mh-formnote mh-formnote--err" data-admin-login-err role="alert">
+            Passwort falsch.
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <!-- 2. Admin-Panel (versteckt bis Login) -->
+    <div hidden data-admin-content>
+      <div style="max-width:800px; margin-inline:auto">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:32px; padding-bottom:16px; border-bottom:1px solid var(--mh-border)">
+          <h1 class="mh-display mh-h2">Schüler-Verwaltung</h1>
+          <button class="mh-btn mh-btn--ghost" type="button" data-admin-logout>Abmelden</button>
+        </div>
+
+        <!-- Neuen Schüler hinzufügen -->
+        <div class="mh-lb__gruppe">
+          <h2>Neuen Schüler hinzufügen</h2>
+          <form class="mh-form" data-admin-add-student novalidate>
+            <div class="mh-field">
+              <label for="student-email">E-Mail-Adresse</label>
+              <input id="student-email" type="email" name="email" required placeholder="name@beispiel.de">
+            </div>
+
+            <div style="display:flex; gap:12px; flex-wrap:wrap">
+              <div style="flex:1; min-width:200px">
+                <label for="student-pwd">Passwort (Auto-generiert)</label>
+                <div style="display:flex; gap:8px">
+                  <input id="student-pwd" type="text" readonly style="flex:1; padding:8px; border:1px solid var(--mh-border); border-radius:var(--mh-radius); background:var(--mh-bg-muted); font-family:monospace; font-size:13px">
+                  <button class="mh-btn" type="button" data-generate-pwd title="Neues Passwort generieren" style="white-space:nowrap">🔄</button>
+                  <button class="mh-btn" type="button" data-copy-pwd title="Passwort kopieren" style="white-space:nowrap">📋</button>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top:16px; padding:12px; background:var(--mh-bg-muted); border-radius:var(--mh-radius); font-size:13px">
+              <strong>Nachricht-Template:</strong>
+              <textarea id="pwd-template" readonly style="width:100%; height:100px; padding:8px; margin-top:8px; border:1px solid var(--mh-border); border-radius:var(--mh-radius); font-family:monospace; font-size:12px; resize:none"></textarea>
+              <button class="mh-btn mh-btn--small" type="button" data-copy-template style="margin-top:8px">Template kopieren →</button>
+            </div>
+
+            <button class="mh-btn mh-btn--lg mh-btn--block" type="submit">Schüler hinzufügen →</button>
+
+            <p class="mh-formnote mh-formnote--ok" data-student-ok role="status">
+              Schüler erfolgreich hinzugefügt!
+            </p>
+            <p class="mh-formnote mh-formnote--err" data-student-err role="alert">
+              Fehler beim Hinzufügen des Schülers.
+            </p>
+          </form>
+        </div>
+
+        <!-- Existierende Schüler -->
+        <div class="mh-lb__gruppe" style="margin-top:clamp(40px,6vw,56px)">
+          <h2>Alle Schüler</h2>
+          <ul class="mh-dateien" data-students-list style="list-style:none; padding:0; margin:0">
+            <li class="mh-datei mh-datei--leer">Wird geladen …</li>
+          </ul>
+        </div>
+
+        <!-- Datei für Schüler hochladen -->
+        <div class="mh-lb__gruppe" style="margin-top:clamp(40px,6vw,56px)">
+          <h2>Datei für Schüler hochladen</h2>
+          <p>Wähle einen Schüler (oder "Für alle") und lade eine Datei hoch. Sie erscheint sofort im Lernbereich des Schülers.</p>
+          <form class="mh-form" data-admin-upload novalidate>
+            <div class="mh-field">
+              <label for="upload-target">Für wen?</label>
+              <select id="upload-target" name="target" required style="width:100%; padding:10px 12px; border:1px solid var(--mh-border); border-radius:var(--mh-radius); font-size:14px; background:var(--mh-white)">
+                <option value="_allgemein">Für alle Schüler (allgemein)</option>
+              </select>
+            </div>
+            <div class="mh-field">
+              <label for="admin-upload-file">Datei auswählen</label>
+              <input id="admin-upload-file" type="file" name="file" required style="display:block; width:100%; padding:8px; border:1px solid var(--mh-border); border-radius:var(--mh-radius); font-size:14px">
+            </div>
+            <button class="mh-btn mh-btn--lg mh-btn--block" type="submit">Hochladen →</button>
+            <p class="mh-formnote mh-formnote--ok" data-admin-upload-ok role="status">
+              Datei erfolgreich hochgeladen!
+            </p>
+            <p class="mh-formnote mh-formnote--err" data-admin-upload-err role="alert">
+              Upload fehlgeschlagen.
+            </p>
+          </form>
+
+          <div style="margin-top:24px">
+            <h3 style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--mh-green); margin-bottom:10px">Bereits hochgeladen</h3>
+            <ul class="mh-dateien" data-admin-uploaded-list style="list-style:none; padding:0; margin:0">
+              <li class="mh-datei mh-datei--leer">Wähle oben einen Empfänger aus.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<!--@include footer-->
+<script src="js/config.js"></script>
+<script src="assets/vendor/supabase/supabase.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

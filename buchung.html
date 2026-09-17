@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#24493a">
+<title>2 Gratis-Stunden sichern | MATHHOOD</title>
+<meta name="description" content="Zwei kostenlose Probestunden Mathe-Nachhilfe sichern, online oder vor Ort. Freien Termin direkt im Kalender auswählen, ohne Verpflichtung.">
+<meta property="og:title" content="2 Gratis-Stunden sichern | MATHHOOD">
+<meta property="og:description" content="Zwei kostenlose Probestunden sichern, ganz ohne Verpflichtung.">
+<link rel="icon" href="assets/img/favicon-180.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/favicon-180.png">
+<link rel="preload" href="assets/fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/work-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts/fonts.css?v=20260917173301">
+<link rel="stylesheet" href="css/styles.css?v=20260917173301">
+
+</head>
+<body>
+
+<a class="mh-skip" href="#main">Zum Inhalt springen</a>
+
+<!-- Abdunkelung hinter dem mobilen Menü (eigenes Element, direkt im body) -->
+<div class="mh-navbackdrop" data-nav-backdrop aria-hidden="true"></div>
+
+<header class="mh-header">
+  <div class="mh-header__inner">
+    <a class="mh-logo" href="index.html" aria-label="MATHHOOD Startseite">
+      <img class="mh-logo__img" src="assets/img/mathhood-logo.png" alt="MATHHOOD"
+           onerror="this.closest('.mh-logo').classList.add('mh-logo--nofile')">
+      <span class="mh-logo__fallback" aria-hidden="true">
+        <span class="mh-logo__word">Mathhood</span>
+      </span>
+    </a>
+
+    <button class="mh-burger" type="button" aria-expanded="false" aria-controls="mh-nav-wrap" aria-label="Menü öffnen">
+      <span></span>
+    </button>
+
+    <div class="mh-header__nav-wrap" id="mh-nav-wrap">
+     <div class="mh-navpanel">
+      <nav class="mh-nav" aria-label="Hauptnavigation" data-mh-nav>
+        <a class="mh-nav__link" href="index.html">Startseite</a>
+        <a class="mh-nav__link" href="preise.html">Nachhilfe &amp; Preise</a>
+        <a class="mh-nav__link" href="ueber-mich.html">Über mich</a>
+        <a class="mh-nav__link" href="kontakt.html">Kontakt</a>
+      </nav>
+      <div class="mh-header__actions">
+        <a class="mh-header__login" href="login.html">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="7" cy="4.4" r="2.5"></circle><path d="M2 12.2c0-2.4 2.2-3.8 5-3.8s5 1.4 5 3.8"></path>
+          </svg>
+          Login
+        </a>
+        <a class="mh-header__cta" href="buchung.html">Jetzt buchen</a>
+      </div>
+     </div>
+    </div>
+  </div>
+</header>
+
+
+<main id="main">
+
+  <header class="mh-pagehead mh-pagehead--dark">
+    <h1>Zwei Gratis-Stunden sichern</h1>
+    <p>Als Neukunde bekommst du die ersten beiden Unterrichtsstunden geschenkt. Unverbindlich ausprobieren, dann in Ruhe entscheiden.</p>
+  </header>
+
+  <!-- Ablauf -->
+  <section class="mh-container" style="padding-block: clamp(40px,6vw,56px)" aria-labelledby="ablauf-h">
+    <h2 id="ablauf-h" class="mh-visually-hidden">So läuft es ab</h2>
+    <div class="mh-steps mh-steps--3">
+      <div class="mh-step">
+        <h3>Termin aussuchen</h3>
+        <p>Grüne Zeiten im Kalender sind frei. Einfach anklicken.</p>
+      </div>
+      <div class="mh-step">
+        <h3>Angaben ausfüllen</h3>
+        <p>Klassenstufe und worum es gehen soll. Dauert zwei Minuten.</p>
+      </div>
+      <div class="mh-step">
+        <h3>Losstarten</h3>
+        <p>Zwei kostenlose Stunden, online per Link oder bei dir zu Hause.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hinweis auf die Gratis-Stunden -->
+  <section class="mh-container" style="padding-bottom: clamp(32px,4vw,44px)">
+    <div class="mh-trial">
+      <div class="mh-trial__left">
+        <span class="mh-trial__badge mh-anim-pulse">2H<br>GRATIS</span>
+        <div>
+          <div class="mh-trial__title">Deine ersten beiden Stunden gehen aufs Haus</div>
+          <div class="mh-trial__sub">Kein Haken, keine Kündigung nötig. Such dir unten einfach einen freien Termin aus.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kalender -->
+  <section class="mh-container" style="padding-bottom: clamp(40px,6vw,56px)" aria-labelledby="kal-h">
+    <h2 id="kal-h" class="mh-display mh-h2" style="margin-bottom:8px">Freien Termin wählen</h2>
+    <p class="mh-prose" style="margin-bottom:24px">
+      <b>Ein Klick bucht eine Einheit von 70 Minuten.</b> Brauchst du mehrere Termine,
+      wähle sie nacheinander aus. Hier buchst du auch alle weiteren Einheiten,
+      wenn die Probestunden vorbei sind.
+    </p>
+
+    <div class="mh-kal" data-mh-kalender>
+      <div class="mh-kal__kopf">
+        <span class="mh-kal__wochentitel" data-wochentitel>Wird geladen …</span>
+        <div class="mh-kal__nav">
+          <button class="mh-kal__pfeil" type="button" data-woche-zurueck aria-label="Vorherige Woche">‹</button>
+          <button class="mh-kal__pfeil" type="button" data-woche-vor aria-label="Nächste Woche">›</button>
+        </div>
+      </div>
+
+      <p class="mh-laden" data-kalender-laden>Freie Termine werden geladen …</p>
+
+      <div class="mh-kal__gitter" data-gitter hidden></div>
+
+      <p class="mh-formnote mh-formnote--err" data-kalender-fehler hidden style="margin-top:16px">
+        <span data-fehlertext>Die Termine konnten nicht geladen werden.</span>
+      </p>
+
+      <p class="mh-kal__leer" data-nichts-frei hidden style="padding:18px 0">
+        In dieser Woche ist nichts mehr frei. Schau in der nächsten Woche nach.
+      </p>
+
+      <div class="mh-kal__legende">
+        <span><i class="mh-kal__punkt"></i> frei</span>
+        <span><i class="mh-kal__punkt mh-kal__punkt--belegt"></i> vergeben</span>
+        <span>Termine sind bis 24 Stunden vorher buchbar.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Buchungsformular: erscheint erst nach der Terminwahl -->
+  <section class="mh-container" style="padding-bottom: clamp(56px,8vw,88px)">
+    <div class="mh-formwrap" style="max-width:820px; margin-inline:auto" data-buchungsform hidden>
+
+      <div class="mh-slotinfo">
+        <div class="mh-slotinfo__haupt">
+          <span class="mh-slotinfo__label">Dein Termin</span>
+          <span class="mh-slotinfo__wert" data-gewaehlter-slot>-</span>
+        </div>
+        <div class="mh-slotinfo__chips" data-buchungs-uebersicht>
+          <span class="mh-chip">1 Einheit · 70 Minuten</span>
+        </div>
+      </div>
+
+      <h2 class="mh-display mh-h3" style="text-transform:uppercase; margin-bottom:6px">Deine Angaben</h2>
+      <p class="mh-prose" style="font-size:14.5px; margin-bottom:26px">Felder mit <span style="color:var(--mh-green)">*</span> brauchen wir, um dir den Termin zu bestätigen.</p>
+
+      <form class="mh-form" data-mh-buchen
+            data-melden-an="https://formspree.io/f/xoeqyzdl" novalidate>
+
+        <!-- Spam-Falle: bitte nicht entfernen -->
+        <div class="mh-hp" aria-hidden="true">
+          <label for="b-gotcha">Dieses Feld bitte leer lassen</label>
+          <input id="b-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+        </div>
+
+        <input type="hidden" name="termin" value="">
+
+        <div class="mh-field">
+          <label for="b-anlass">Anlass <span class="req">*</span></label>
+          <select id="b-anlass" name="anlass" required>
+            <option value="probestunde">Kostenlose Probestunde (erste beide Stunden)</option>
+            <option value="einzelstunde">Einzelstunde</option>
+            <option value="lernpaket">Stunde aus meinem 10er-Lernpaket</option>
+            <option value="pruefung">Klausur- oder Abiturvorbereitung</option>
+          </select>
+          <span class="mh-field__hint">Als Neukunde sind deine ersten beiden Stunden kostenfrei.</span>
+        </div>
+
+        <div class="mh-form__row mh-form__row--2">
+          <div class="mh-field">
+            <label for="b-schueler">Name des Schülers <span class="req">*</span></label>
+            <input id="b-schueler" type="text" name="schueler" required placeholder="Vor- und Nachname">
+          </div>
+          <div class="mh-field">
+            <label for="b-klasse">Klassenstufe <span class="req">*</span></label>
+            <select id="b-klasse" name="klasse" required>
+              <option value="">Bitte wählen …</option>
+              <option value="5">5. Klasse</option><option value="6">6. Klasse</option>
+              <option value="7">7. Klasse</option><option value="8">8. Klasse</option>
+              <option value="9">9. Klasse</option><option value="10">10. Klasse</option>
+              <option value="11">11. Klasse</option><option value="12">12. Klasse</option>
+              <option value="13">13. Klasse / Abitur</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mh-field">
+          <label for="b-kontaktname">Ansprechpartner <span class="req">*</span></label>
+          <input id="b-kontaktname" type="text" name="ansprechpartner" required autocomplete="name" placeholder="Name der Eltern, oder eigener Name, wenn volljährig">
+          <span class="mh-field__hint">Bei minderjährigen Schülern brauchen wir eine erwachsene Kontaktperson.</span>
+        </div>
+
+        <div class="mh-form__row mh-form__row--2">
+          <div class="mh-field">
+            <label for="b-email">E-Mail <span class="req">*</span></label>
+            <input id="b-email" type="email" name="email" required autocomplete="email" placeholder="name@beispiel.de">
+          </div>
+          <div class="mh-field">
+            <label for="b-tel">Telefon</label>
+            <input id="b-tel" type="tel" name="telefon" autocomplete="tel" placeholder="optional, für Rückfragen">
+          </div>
+        </div>
+
+        <div class="mh-form__row mh-form__row--2">
+          <div class="mh-field">
+            <label for="b-art">Unterrichtsart <span class="req">*</span></label>
+            <select id="b-art" name="unterrichtsart" required>
+              <option value="online">Online</option>
+              <option value="vor-ort">Vor Ort (bei mir zu Hause)</option>
+            </select>
+          </div>
+          <div class="mh-field" data-when-vorort hidden>
+            <label for="b-plz">Postleitzahl <span class="req">*</span></label>
+            <input id="b-plz" type="text" name="plz" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code" placeholder="z. B. 86609">
+            <span class="mh-field__hint">Damit wir die Anfahrt einschätzen können.</span>
+          </div>
+        </div>
+
+        <div class="mh-field">
+          <label for="b-themen">Worum soll es gehen?</label>
+          <textarea id="b-themen" name="thema" rows="5"
+                    placeholder="Aktuelles Thema, anstehende Klassenarbeit, wo es gerade hakt …"></textarea>
+          <span class="mh-field__hint">Je konkreter, desto besser können wir die erste Stunde vorbereiten.</span>
+        </div>
+
+        <div class="mh-check">
+          <input id="b-dsgvo" type="checkbox" name="datenschutz" required value="ja">
+          <label for="b-dsgvo">Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und bin damit einverstanden, dass meine Angaben zur Bearbeitung meiner Buchung gespeichert werden. <span class="req">*</span></label>
+        </div>
+
+        <p style="font-size:14px; line-height:1.6; color:var(--mh-muted); margin:0">
+          Hier wird nichts bezahlt. Du buchst nur den Termin. Abgerechnet wird
+          danach per Rechnung, wahlweise PayPal oder Überweisung, bei
+          Vor-Ort-Terminen auch Bar direkt nach der Stunde.
+          <a href="preise.html#zahlung">Wie die Bezahlung läuft →</a>
+        </p>
+
+        <button class="mh-btn mh-btn--lg" type="submit">Termin verbindlich buchen →</button>
+
+        <p class="mh-formnote mh-formnote--ok" data-note="ok" role="status">
+          Termin gebucht! Du bekommst in Kürze eine Bestätigung per E-Mail.
+          Wir freuen uns auf dich.
+        </p>
+        <p class="mh-formnote mh-formnote--err" data-note="err" role="alert">
+          Das hat nicht geklappt. Bitte versuch es erneut.
+        </p>
+      </form>
+    </div>
+
+    <p class="mh-prose" style="text-align:center; margin-top:28px; font-size:14px">
+      Kein passender Termin dabei? <a href="kontakt.html" style="font-weight:700">Schreib uns einfach →</a>
+    </p>
+  </section>
+
+</main>
+
+<footer class="mh-footer">
+  <div class="mh-footer__inner">
+    <div class="mh-footer__top">
+      <img class="mh-footer__logo" src="assets/img/mathhood-logo.png" alt="MATHHOOD">
+      <span class="mh-footer__tag">MATHHOOD by Robin | Mathe-Nachhilfe Klasse 5–13</span>
+    </div>
+
+    <div class="mh-footer__cols">
+      <div>
+        <h2>Angebot</h2>
+        <a href="preise.html">Nachhilfe &amp; Preise</a>
+        <a href="produkt-online.html">Online-Nachhilfe</a>
+        <a href="produkt-vor-ort.html">Vor-Ort-Nachhilfe</a>
+        <a href="produkt-lernpaket.html">10er-Lernpaket</a>
+      </div>
+      <div>
+        <h2>MATHHOOD</h2>
+        <a href="ueber-mich.html">Über mich</a>
+        <a href="dienstleistungen.html">Dienstleistungen</a>
+        <a href="buchung.html">Probestunden buchen</a>
+        <a href="kontakt.html">Kontakt &amp; FAQ</a>
+        <a href="login.html">Lernbereich</a>
+      </div>
+      <div>
+        <h2>Rechtliches</h2>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="agb.html">AGB</a>
+        <a href="widerruf.html">Widerrufsbelehrung</a>
+      </div>
+    </div>
+
+    <div class="mh-footer__bottom">
+
+    <div class="mh-footer__payments">
+      <span class="mh-footer__payments-label">Sichere Zahlungsarten:</span>
+      <div class="mh-footer__payments-methods">
+        <div class="mh-payment-logo">
+          <img src="assets/img/sepa-logo.svg" alt="Banküberweisung SEPA" width="60" height="40">
+          <span>Banküberweisung</span>
+        </div>
+        <a href="https://www.paypal.com/de/home" target="_blank" rel="noopener" class="mh-payment-logo" title="PayPal öffnen">
+          <img src="assets/img/paypal-logo.svg" alt="PayPal" width="60" height="40">
+          <span>PayPal</span>
+        </a>
+      </div>
+    </div>
+
+
+
+
+
+
+      <span>© 2026 MATHHOOD</span>
+      <span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js?v=20260917173301"></script>
+
+<script src="js/config.js?v=20260917173301"></script>
+<script src="assets/vendor/supabase/supabase.js?v=20260917173301"></script>
+<script src="js/forms.js?v=20260917173301"></script>
+<script src="js/kalender.js?v=20260917173301"></script>
+</body>
+</html>
