@@ -77,8 +77,11 @@
       if (NICHT_EINGERICHTET) { hinweisNichtEingerichtet(err); return; }
       if (!db) { zeige(err, 'Datenbankverbindung fehlgeschlagen.'); return; }
 
-      var email = loginForm.querySelector('[name="email"]').value.trim();
-      var password = loginForm.querySelector('[name="password"]').value;
+      /* E-Mail unabhängig von Groß-/Kleinschreibung und Leerzeichen behandeln,
+         das Passwort ebenfalls trimmen — sonst scheitert der Login leicht an
+         Autokorrektur (Großbuchstabe am Anfang) oder Copy-Paste-Leerzeichen. */
+      var email = loginForm.querySelector('[name="email"]').value.trim().toLowerCase();
+      var password = loginForm.querySelector('[name="password"]').value.trim();
       loginForm.classList.add('is-sending');
 
       /* RPC aufrufen um Passwort zu prüfen */

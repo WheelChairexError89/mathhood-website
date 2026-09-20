@@ -174,7 +174,9 @@
       if (!addForm.reportValidity()) return;
       if (!db) { if (studentErr) zeige(studentErr, 'Datenbankverbindung fehlgeschlagen.'); return; }
 
-      var email = addForm.querySelector('[name="email"]').value.trim();
+      /* Konsistent klein und ohne Leerzeichen speichern, damit der Schüler
+         sich später unabhängig von Groß-/Kleinschreibung anmelden kann. */
+      var email = addForm.querySelector('[name="email"]').value.trim().toLowerCase();
       var password = pwdField ? pwdField.value : '';
 
       if (!password) {
