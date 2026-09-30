@@ -143,8 +143,8 @@
         kopfzeileAnpassen(true);
         zeigeAbschnitt(inhalt);
         ladeDateien(studentEmail, listeEigene, 'Für dich wurde noch nichts hinterlegt. '
-          + 'Nach der nächsten Stunde findest du hier deine Unterlagen.');
-        ladeDateien(CFG.gemeinsamerOrdner, listeAlle, 'Hier ist noch nichts hinterlegt.');
+          + 'Nach der nächsten Stunde findest du hier deine Unterlagen.', true);
+        ladeDateien(CFG.gemeinsamerOrdner, listeAlle, 'Hier ist noch nichts hinterlegt.', false);
       }
     }
 
@@ -166,7 +166,7 @@
       return 'M6 3h9l4 4v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z';
     }
 
-    function ladeDateien(ordner, ziel, leerText) {
+    function ladeDateien(ordner, ziel, leerText, erlaubeLoeschen) {
       if (!ziel || !db) return;
       db.storage.from(CFG.bucket).list(ordner, {
         limit: 100, sortBy: { column: 'created_at', order: 'desc' }
@@ -193,9 +193,12 @@
             + '<span class="mh-datei__meta">' + datum(f.created_at)
             + (f.metadata && f.metadata.size ? ' · ' + dateigroesse(f.metadata.size) : '')
             + '</span></span>'
-            + '<button class="mh-btn mh-btn--ghost mh-datei__knopf" type="button">Öffnen</button>';
+            + '<span style="display:flex; gap:8px; flex-shrink:0">'
+            + '<button class="mh-btn mh-btn--ghost mh-datei__knopf" type="button" data-oeffnen>Öffnen</button>'
+            + (erlaubeLoeschen ? '<button class="mh-btn mh-btn--ghost mh-datei__knopf" type="button" data-datei-loeschen>Löschen</button>' : '')
+            + '</span>';
           li.querySelector('.mh-datei__name').textContent = f.name;
-          li.querySelector('button').addEventListener('click', function () {
+          li.querySelector('[data-oeffnen]').addEventListener('click', function () {
             var knopf = this;
             knopf.disabled = true; knopf.textContent = '…';
             db.storage.from(CFG.bucket)
@@ -205,6 +208,27 @@
                 if (u.data && u.data.signedUrl) window.open(u.data.signedUrl, '_blank', 'noopener');
               });
           });
+          var loeschKnopf = li.querySelector('[data-datei-loeschen]');
+          if (loeschKnopf) {
+            loeschKnopf.addEventListener('click', function () {
+              if (!confirm('Datei "' + f.name + '" wirklich löschen?')) return;
+              loeschKnopf.disabled = true;
+              db.storage.from(CFG.bucket).remove([ordner + '/' + f.name]).then(function (r2) {
+                if (r2.error) {
+                  loeschKnopf.disabled = false;
+                  alert('Fehler beim Löschen: ' + r2.error.message);
+                  return;
+                }
+                li.remove();
+                if (!ziel.querySelector('li')) {
+                  ziel.innerHTML = '<li class="mh-datei mh-datei--leer">' + leerText + '</li>';
+                }
+              }).catch(function (e) {
+                loeschKnopf.disabled = false;
+                alert('Fehler: ' + (e.message || 'Verbindung fehlgeschlagen'));
+              });
+            });
+          }
           ziel.appendChild(li);
         });
       });
@@ -253,7 +277,7 @@
             setTimeout(function () {
               if (uploadOk) uploadOk.hidden = true;
               ladeDateien(studentEmail, listeEigene, 'Für dich wurde noch nichts hinterlegt. '
-                + 'Nach der nächsten Stunde findest du hier deine Unterlagen.');
+                + 'Nach der nächsten Stunde findest du hier deine Unterlagen.', true);
             }, 1500);
           }).catch(function (e) {
             uploadForm.classList.remove('is-sending');

@@ -415,6 +415,9 @@
           db.storage.from(CFG.bucket).remove([ordner + '/' + f.name]).then(function (r2) {
             if (r2.error) { btn.disabled = false; alert('Fehler: ' + r2.error.message); return; }
             li.remove();
+            if (!uploadedList.querySelector('li')) {
+              uploadedList.innerHTML = '<li class="mh-datei mh-datei--leer">Für "' + ordner + '" wurde noch nichts hochgeladen.</li>';
+            }
           });
         });
 
