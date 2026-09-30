@@ -211,13 +211,13 @@
             if (studentErr) zeige(studentErr, msg || 'Fehler beim Hinzufügen.');
             return;
           }
-          if (studentOk) zeige(studentOk);
-          addForm.reset();
-          if (pwdField) { pwdField.value = generierePasswort(); updateTemplate(); }
-          setTimeout(function () {
-            if (studentOk) verstecke(studentOk);
-            ladeStuedenten();
-          }, 1500);
+          /* Passwort bleibt bewusst stehen, bis der Admin es kopiert hat —
+             es wird NICHT automatisch neu generiert. Sobald es einmal
+             gespeichert ist, kommt es nirgends mehr im Klartext vor (nur
+             als Hash), also darf es hier nicht einfach verschwinden. */
+          if (studentOk) zeige(studentOk, 'Schüler hinzugefügt! Passwort oben jetzt notieren oder kopieren — bevor du auf 🔄 klickst, ist es weg.');
+          addForm.querySelector('[name="email"]').value = '';
+          ladeStuedenten();
         })
         .catch(function (e) {
           fertig();
@@ -287,12 +287,48 @@
           var d = new Date(student.created_at);
           var dateStr = d.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' });
 
+          li.style.cssText += '; flex-direction:column; align-items:stretch; gap:8px';
           li.innerHTML =
+            '<div style="display:flex; justify-content:space-between; align-items:center; gap:8px">' +
             '<div>' +
             '<div style="font-weight:500">' + student.email + '</div>' +
             '<div style="font-size:12px; color:var(--mh-text-muted); margin-top:4px">Hinzugefügt: ' + dateStr + '</div>' +
             '</div>' +
-            '<button class="mh-btn mh-btn--ghost mh-btn--small" type="button" data-delete-student style="white-space:nowrap">Löschen</button>';
+            '<div style="display:flex; gap:8px; flex-shrink:0">' +
+            '<button class="mh-btn mh-btn--ghost mh-btn--small" type="button" data-reset-student style="white-space:nowrap">Passwort zurücksetzen</button>' +
+            '<button class="mh-btn mh-btn--ghost mh-btn--small" type="button" data-delete-student style="white-space:nowrap">Löschen</button>' +
+            '</div>' +
+            '</div>' +
+            '<div data-reset-anzeige hidden style="padding:10px 12px; background:var(--mh-bg-muted); border-radius:var(--mh-radius); font-size:13px; display:flex; justify-content:space-between; align-items:center; gap:8px"></div>';
+
+          var resetBtn = li.querySelector('[data-reset-student]');
+          var resetAnzeige = li.querySelector('[data-reset-anzeige]');
+          resetBtn.addEventListener('click', function () {
+            if (!confirm('Neues Passwort für ' + student.email + ' setzen? Das alte Passwort funktioniert danach nicht mehr.')) return;
+            resetBtn.disabled = true;
+            var neuesPasswort = generierePasswort();
+            db.rpc('admin_reset_student_password', {
+              p_admin_password: adminPasswort(), p_student_id: student.id, p_new_password: neuesPasswort
+            }).then(function (r) {
+              resetBtn.disabled = false;
+              if (r.error) { alert('Fehler: ' + r.error.message); return; }
+              if (r.data !== true) { alert('Zurücksetzen fehlgeschlagen: Schüler wurde nicht gefunden.'); return; }
+              resetAnzeige.hidden = false;
+              resetAnzeige.innerHTML =
+                '<span style="font-family:monospace; font-weight:600">' + neuesPasswort + '</span>' +
+                '<button class="mh-btn mh-btn--small" type="button" style="white-space:nowrap">📋 Kopieren</button>';
+              resetAnzeige.querySelector('button').addEventListener('click', function () {
+                var btn = this;
+                navigator.clipboard.writeText(neuesPasswort).then(function () {
+                  btn.textContent = '✓ Kopiert';
+                  setTimeout(function () { btn.textContent = '📋 Kopieren'; }, 1500);
+                });
+              });
+            }).catch(function (e) {
+              resetBtn.disabled = false;
+              alert('Fehler: ' + (e.message || 'Verbindung fehlgeschlagen'));
+            });
+          });
 
           var delBtn = li.querySelector('[data-delete-student]');
           delBtn.addEventListener('click', function () {
@@ -404,8 +440,8 @@
       var file = fileInput.files[0];
       if (!file) return;
 
-      if (file.size > 10 * 1024 * 1024) {
-        if (uploadErr) zeige(uploadErr, 'Datei ist zu groß (max. 10 MB).');
+      if (file.size > 100 * 1024 * 1024) {
+        if (uploadErr) zeige(uploadErr, 'Datei ist zu groß (max. 100 MB).');
         return;
       }
 

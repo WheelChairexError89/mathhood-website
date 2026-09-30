@@ -224,10 +224,10 @@
         var file = fileInput.files[0];
         if (!file) return;
 
-        /* Max 10 MB */
-        if (file.size > 10 * 1024 * 1024) {
+        /* Max 100 MB */
+        if (file.size > 100 * 1024 * 1024) {
           if (uploadErr) uploadErr.hidden = false;
-          if (uploadErr) uploadErr.textContent = 'Datei ist zu groß (max. 10 MB).';
+          if (uploadErr) uploadErr.textContent = 'Datei ist zu groß (max. 100 MB).';
           return;
         }
 
