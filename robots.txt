@@ -9,4 +9,4 @@ Disallow: /widerruf.html
 Disallow: /login.html
 Disallow: /lernbereich.html
 
-Sitemap: https://DEINE-DOMAIN.de/sitemap.xml
+Sitemap: https://mathhood.de/sitemap.xml

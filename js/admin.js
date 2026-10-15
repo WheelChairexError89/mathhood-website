@@ -81,7 +81,14 @@
          steht nie im Klartext im JS-Code. */
       db.rpc('verify_admin_password', { p_password: pwd }).then(function (r) {
         if (submitBtn) { submitBtn.textContent = submitBtnText; submitBtn.disabled = false; }
-        if (r.error) { if (loginErr) zeige(loginErr, 'Fehler bei der Anmeldung.'); return; }
+        if (r.error) {
+          /* Rate-Limiting-Meldung ("Zu viele Versuche...") wörtlich zeigen,
+             sonst generische Fehlermeldung. */
+          var msg = /zu viele fehlgeschlagene versuche/i.test(r.error.message || '')
+            ? r.error.message : 'Fehler bei der Anmeldung.';
+          if (loginErr) zeige(loginErr, msg);
+          return;
+        }
         if (r.data === true) {
           sessionStorage.setItem('adminAuth', 'true');
           sessionStorage.setItem('adminPwd', pwd);
