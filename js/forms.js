@@ -74,6 +74,78 @@
     });
   });
 
+  /* ---- Eingaben prüfen: echte Namen, keine Links, keine Beleidigungen --
+     Felder werden über data-pruefe="name|text|telefon" markiert. Die
+     Meldung erscheint über die normale Browser-Prüfung beim Absenden.
+     Die Wortliste ist bewusst klein und arbeitet mit ganzen Wörtern,
+     damit echte Namen und Wörter wie "Marsch" nicht getroffen werden. */
+  var GANZE_WOERTER = ['hitler', 'himmler', 'goebbels', 'nazi', 'nazis', 'fuck',
+    'fucker', 'scheisse', 'scheiss', 'arsch', 'arschloch', 'hurensohn', 'hurensoehne',
+    'wichser', 'fotze', 'schlampe', 'bitch', 'asshole', 'ficken', 'penis', 'vagina',
+    'titten', 'hure', 'nutte', 'wixer', 'spast'];
+  var AUCH_ZUSAMMENGESCHRIEBEN = ['hitler', 'himmler', 'goebbels', 'siegheil',
+    'hurensohn', 'wichser'];
+
+  function normalisiere(s) {
+    var t = String(s).toLowerCase()
+      .replace(/ß/g, 'ss').replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue')
+      .normalize('NFD').replace(/[̀-ͯ]/g, '')
+      .replace(/0/g, 'o').replace(/1/g, 'i').replace(/3/g, 'e').replace(/4/g, 'a')
+      .replace(/5/g, 's').replace(/7/g, 't')
+      /* @, $ und ! nur mitten im Wort als Buchstabe deuten (h!tler),
+         am Wortende sind es normale Satzzeichen */
+      .replace(/([a-z])@(?=[a-z])/g, '$1a').replace(/([a-z])\$(?=[a-z])/g, '$1s')
+      .replace(/([a-z])!(?=[a-z])/g, '$1i');
+    return t.replace(/[^a-z]+/g, ' ').trim();
+  }
+
+  function unangemessen(wert) {
+    var n = normalisiere(wert);
+    if (!n) return false;
+    var woerter = n.split(' ');
+    if (woerter.some(function (w) { return GANZE_WOERTER.indexOf(w) > -1; })) return true;
+    var zusammen = woerter.join('');
+    return AUCH_ZUSAMMENGESCHRIEBEN.some(function (b) { return zusammen.indexOf(b) > -1; });
+  }
+
+  function pruefeFeld(el) {
+    var art = el.getAttribute('data-pruefe');
+    var v = el.value.trim();
+    var meldung = '';
+    if (v) {
+      if (art === 'name') {
+        if (!/^[\p{L}][\p{L}\s'’.\-]*$/u.test(v) || v.replace(/[^\p{L}]/gu, '').length < 2) {
+          meldung = 'Bitte gib einen Namen ein, nur mit Buchstaben (keine Zahlen oder Sonderzeichen).';
+        }
+      } else if (art === 'telefon') {
+        if (!/^[0-9+()\/\s-]{5,30}$/.test(v)) {
+          meldung = 'Bitte gib eine gültige Telefonnummer ein, z. B. 0152 1234567.';
+        }
+      } else if (art === 'text') {
+        if (/(https?:\/\/|www\.)/i.test(v)) {
+          meldung = 'Bitte schreib keine Links in die Nachricht.';
+        } else if (/<\/?(script|a|img|iframe|style|svg|object|embed|link|meta|body|html|div|span|form|input|button|p|br)\b[^>]*>/i.test(v)) {
+          meldung = 'Bitte schreib keinen Code (HTML) in die Nachricht.';
+        }
+      }
+      if (!meldung && (art === 'name' || art === 'text') && unangemessen(v)) {
+        meldung = 'Bitte verwende keine beleidigenden oder unangemessenen Begriffe.';
+      }
+    }
+    el.setCustomValidity(meldung);
+  }
+
+  document.querySelectorAll('[data-pruefe]').forEach(function (el) {
+    el.addEventListener('input', function () { pruefeFeld(el); });
+    el.addEventListener('change', function () { pruefeFeld(el); });
+  });
+  /* Vor jedem Absenden alle Felder frisch prüfen (auch bei Autofill) */
+  document.querySelectorAll('form[data-mh-form], form[data-mh-buchen]').forEach(function (f) {
+    f.addEventListener('submit', function () {
+      f.querySelectorAll('[data-pruefe]').forEach(pruefeFeld);
+    }, true);
+  });
+
   /* ---- Buchung: Vor-Ort-Felder nur bei Bedarf zeigen ------------- */
   var artSel = document.querySelector('[name="unterrichtsart"]');
   var ortBox = document.querySelector('[data-when-vorort]');

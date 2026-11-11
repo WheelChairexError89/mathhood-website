@@ -12,8 +12,8 @@
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
 <link rel="preload" href="assets/fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/work-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/fonts/fonts.css?v=20261111110857">
-<link rel="stylesheet" href="css/styles.css?v=20261111110857">
+<link rel="stylesheet" href="assets/fonts/fonts.css?v=20261111112240">
+<link rel="stylesheet" href="css/styles.css?v=20261111112240">
 
 </head>
 <body>
@@ -87,18 +87,18 @@
           <div class="mh-form__row mh-form__row--2">
             <div class="mh-field">
               <label for="k-name">Name <span class="req">*</span></label>
-              <input id="k-name" type="text" name="name" required autocomplete="name" placeholder="Vor- und Nachname">
+              <input id="k-name" type="text" name="name" required maxlength="60" data-pruefe="name" autocomplete="name" placeholder="Vor- und Nachname">
             </div>
             <div class="mh-field">
               <label for="k-email">E-Mail <span class="req">*</span></label>
-              <input id="k-email" type="email" name="email" required autocomplete="email" placeholder="name@beispiel.de">
+              <input id="k-email" type="email" name="email" required maxlength="100" autocomplete="email" placeholder="name@beispiel.de">
             </div>
           </div>
 
           <div class="mh-form__row mh-form__row--2">
             <div class="mh-field">
               <label for="k-tel">Telefon</label>
-              <input id="k-tel" type="tel" name="telefon" autocomplete="tel" placeholder="optional">
+              <input id="k-tel" type="tel" name="telefon" maxlength="30" data-pruefe="telefon" autocomplete="tel" placeholder="optional">
             </div>
             <div class="mh-field">
               <label for="k-anliegen">Anliegen <span class="req">*</span></label>
@@ -116,7 +116,7 @@
 
           <div class="mh-field">
             <label for="k-nachricht">Nachricht <span class="req">*</span></label>
-            <textarea id="k-nachricht" name="nachricht" required rows="6"
+            <textarea id="k-nachricht" name="nachricht" required rows="6" maxlength="1000" data-pruefe="text"
                       placeholder="Worum geht es? Klassenstufe, Thema, aktuelle Situation …"></textarea>
           </div>
 
@@ -319,8 +319,8 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=20261111110857"></script>
+<script src="js/main.js?v=20261111112240"></script>
 
-<script src="js/forms.js?v=20261111110857"></script>
+<script src="js/forms.js?v=20261111112240"></script>
 </body>
 </html>

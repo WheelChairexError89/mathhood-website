@@ -12,8 +12,8 @@
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
 <link rel="preload" href="assets/fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/work-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/fonts/fonts.css?v=20261111110857">
-<link rel="stylesheet" href="css/styles.css?v=20261111110857">
+<link rel="stylesheet" href="assets/fonts/fonts.css?v=20261111112240">
+<link rel="stylesheet" href="css/styles.css?v=20261111112240">
 
 </head>
 <body>
@@ -179,7 +179,7 @@
         <div class="mh-form__row mh-form__row--2">
           <div class="mh-field">
             <label for="b-schueler">Name des Schülers <span class="req">*</span></label>
-            <input id="b-schueler" type="text" name="schueler" required placeholder="Vor- und Nachname">
+            <input id="b-schueler" type="text" name="schueler" required maxlength="60" data-pruefe="name" placeholder="Vor- und Nachname">
           </div>
           <div class="mh-field">
             <label for="b-klasse">Klassenstufe <span class="req">*</span></label>
@@ -201,18 +201,18 @@
 
         <div class="mh-field" data-ansprechpartner>
           <label for="b-kontaktname">Name der Eltern bzw. Erziehungsberechtigten <span class="req">*</span></label>
-          <input id="b-kontaktname" type="text" name="ansprechpartner" required autocomplete="name" placeholder="Vor- und Nachname">
+          <input id="b-kontaktname" type="text" name="ansprechpartner" required maxlength="60" data-pruefe="name" autocomplete="name" placeholder="Vor- und Nachname">
           <span class="mh-field__hint">Bei minderjährigen Schülern brauchen wir eine erwachsene Kontaktperson.</span>
         </div>
 
         <div class="mh-form__row mh-form__row--2">
           <div class="mh-field">
             <label for="b-email">E-Mail <span class="req">*</span></label>
-            <input id="b-email" type="email" name="email" required autocomplete="email" placeholder="name@beispiel.de">
+            <input id="b-email" type="email" name="email" required maxlength="100" autocomplete="email" placeholder="name@beispiel.de">
           </div>
           <div class="mh-field">
             <label for="b-tel">Telefon</label>
-            <input id="b-tel" type="tel" name="telefon" autocomplete="tel" placeholder="optional, für Rückfragen">
+            <input id="b-tel" type="tel" name="telefon" maxlength="30" data-pruefe="telefon" autocomplete="tel" placeholder="optional, für Rückfragen">
           </div>
         </div>
 
@@ -233,7 +233,7 @@
 
         <div class="mh-field">
           <label for="b-themen">Worum soll es gehen?</label>
-          <textarea id="b-themen" name="thema" rows="5"
+          <textarea id="b-themen" name="thema" rows="5" maxlength="1000" data-pruefe="text"
                     placeholder="Aktuelles Thema, anstehende Klassenarbeit, wo es gerade hakt …"></textarea>
           <span class="mh-field__hint">Je konkreter, desto besser können wir die erste Stunde vorbereiten.</span>
         </div>
@@ -328,11 +328,11 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=20261111110857"></script>
+<script src="js/main.js?v=20261111112240"></script>
 
-<script src="js/config.js?v=20261111110857"></script>
-<script src="assets/vendor/supabase/supabase.js?v=20261111110857"></script>
-<script src="js/forms.js?v=20261111110857"></script>
-<script src="js/kalender.js?v=20261111110857"></script>
+<script src="js/config.js?v=20261111112240"></script>
+<script src="assets/vendor/supabase/supabase.js?v=20261111112240"></script>
+<script src="js/forms.js?v=20261111112240"></script>
+<script src="js/kalender.js?v=20261111112240"></script>
 </body>
 </html>
