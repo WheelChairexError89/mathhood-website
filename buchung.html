@@ -12,8 +12,8 @@
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
 <link rel="preload" href="assets/fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/work-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/fonts/fonts.css?v=20261106112200">
-<link rel="stylesheet" href="css/styles.css?v=20261106112200">
+<link rel="stylesheet" href="assets/fonts/fonts.css?v=20261111110857">
+<link rel="stylesheet" href="css/styles.css?v=20261111110857">
 
 </head>
 <body>
@@ -194,9 +194,14 @@
           </div>
         </div>
 
-        <div class="mh-field">
-          <label for="b-kontaktname">Ansprechpartner <span class="req">*</span></label>
-          <input id="b-kontaktname" type="text" name="ansprechpartner" required autocomplete="name" placeholder="Name der Eltern, oder eigener Name, wenn volljährig">
+        <div class="mh-check">
+          <input id="b-volljaehrig" type="checkbox" name="volljaehrig" value="ja">
+          <label for="b-volljaehrig">Ich bin volljährig und buche für mich selbst.</label>
+        </div>
+
+        <div class="mh-field" data-ansprechpartner>
+          <label for="b-kontaktname">Name der Eltern bzw. Erziehungsberechtigten <span class="req">*</span></label>
+          <input id="b-kontaktname" type="text" name="ansprechpartner" required autocomplete="name" placeholder="Vor- und Nachname">
           <span class="mh-field__hint">Bei minderjährigen Schülern brauchen wir eine erwachsene Kontaktperson.</span>
         </div>
 
@@ -323,11 +328,11 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=20261106112200"></script>
+<script src="js/main.js?v=20261111110857"></script>
 
-<script src="js/config.js?v=20261106112200"></script>
-<script src="assets/vendor/supabase/supabase.js?v=20261106112200"></script>
-<script src="js/forms.js?v=20261106112200"></script>
-<script src="js/kalender.js?v=20261106112200"></script>
+<script src="js/config.js?v=20261111110857"></script>
+<script src="assets/vendor/supabase/supabase.js?v=20261111110857"></script>
+<script src="js/forms.js?v=20261111110857"></script>
+<script src="js/kalender.js?v=20261111110857"></script>
 </body>
 </html>

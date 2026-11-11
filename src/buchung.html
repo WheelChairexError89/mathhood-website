@@ -146,9 +146,14 @@
           </div>
         </div>
 
-        <div class="mh-field">
-          <label for="b-kontaktname">Ansprechpartner <span class="req">*</span></label>
-          <input id="b-kontaktname" type="text" name="ansprechpartner" required autocomplete="name" placeholder="Name der Eltern, oder eigener Name, wenn volljährig">
+        <div class="mh-check">
+          <input id="b-volljaehrig" type="checkbox" name="volljaehrig" value="ja">
+          <label for="b-volljaehrig">Ich bin volljährig und buche für mich selbst.</label>
+        </div>
+
+        <div class="mh-field" data-ansprechpartner>
+          <label for="b-kontaktname">Name der Eltern bzw. Erziehungsberechtigten <span class="req">*</span></label>
+          <input id="b-kontaktname" type="text" name="ansprechpartner" required autocomplete="name" placeholder="Vor- und Nachname">
           <span class="mh-field__hint">Bei minderjährigen Schülern brauchen wir eine erwachsene Kontaktperson.</span>
         </div>
 

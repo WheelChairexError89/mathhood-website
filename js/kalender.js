@@ -304,6 +304,25 @@
 
   /* ---- Buchung abschicken --------------------------------------- */
   var form = document.querySelector('form[data-mh-buchen]');
+
+  /* Volljährig: Feld für die Eltern ausblenden. Ein deaktiviertes Feld
+     wird weder geprüft noch mitgeschickt, "Pflichtfeld" fällt also weg. */
+  var volljaehrig = form && form.querySelector('[name="volljaehrig"]');
+  var elternFeld  = form && form.querySelector('[data-ansprechpartner]');
+  var elternInput = elternFeld && elternFeld.querySelector('input');
+  function zeigeElternFeld() {
+    if (!volljaehrig || !elternFeld) return;
+    var erwachsen = volljaehrig.checked;
+    elternFeld.hidden = erwachsen;
+    elternInput.disabled = erwachsen;
+    if (erwachsen) elternInput.value = '';
+  }
+  if (volljaehrig) {
+    volljaehrig.addEventListener('change', zeigeElternFeld);
+    form.addEventListener('reset', function () { setTimeout(zeigeElternFeld, 0); });
+    zeigeElternFeld();
+  }
+
   if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -331,7 +350,8 @@
         uhrzeit:         box.dataset.uhrzeit,
         schueler:        w('schueler'),
         klasse:          w('klasse'),
-        ansprechpartner: w('ansprechpartner'),
+        ansprechpartner: volljaehrig && volljaehrig.checked
+                           ? w('schueler') + ' (volljährig)' : w('ansprechpartner'),
         email:           w('email'),
         telefon:         w('telefon'),
         unterrichtsart:  w('unterrichtsart'),
